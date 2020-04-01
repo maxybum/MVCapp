@@ -1,0 +1,42 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@model IEnumerable<TestAppNetCoreMVC.Data.Models.Tests>
+
+@{
+    ViewData["Title"] = "Tests";
+}
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="accordion" id="accordionExample">
+
+        @foreach ((var item, int index) in Model.Select((item, index) => (item, index)))
+        {
+            <div class="card">
+                <div class="card-header" id="heading_@index">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_@index" aria-expanded="true" aria-controls="collapse_@index">
+                            @item.Name (click for more info)
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapse_@index" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
+                        @item.Description @item.Id <a class="btn btn-primary" href="/Tests/ConfirmationPage?testid=@item.Id" role="button">StartThisTest</a>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+}
+else
+{
+    <div> Please finish registration or login process to start any Test :)</div>
+}
+
+

@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Confirmation Page";
+}
+
+@model int
+
+<div>Confirmation Page</div>
+
+<div class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input" id="defaultUnchecked" onclick="ShowBtn()">
+    <label class="custom-control-label" for="defaultUnchecked">Я подтверждаю </label>
+</div>
+
+<a id="nextbtn" class="btn btn-primary" asp-controller="Tests" asp-action="ConcreteTest" asp-route-testid="@Model" style="display:none;" role="button">StartThisTest</a>
+
+
+<script>
+    function ShowBtn() {
+
+        var checkBox = document.getElementById("defaultUnchecked");
+
+        var btn = document.getElementById("nextbtn");
+
+        if (checkBox.checked == true) {
+            btn.style.display = "block";
+        } else {
+            btn.style.display = "none";
+        }
+    }
+</script>

@@ -1,0 +1,29 @@
+﻿@using TestAppNetCoreMVC.DTO;
+
+@{
+    ViewData["Title"] = "ConcreteTestPage";
+}
+
+@model Evaluation
+
+<div>ConcreteTestPage</div>
+
+@using (Html.BeginForm("SaveResults", "Tests"))
+{
+
+    <div class="py-5 text-center">
+        <div class="container">
+            <div class="row">
+                <div class="mx-auto col-lg-6">
+                    <div class="form-check">
+
+                        @Html.EditorFor(x => x.Questions)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input type="submit" />
+}
+

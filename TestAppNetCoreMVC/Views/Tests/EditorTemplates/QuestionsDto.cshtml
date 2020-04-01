@@ -1,0 +1,16 @@
+﻿
+@model TestAppNetCoreMVC.DTO.QuestionsDto
+
+<div class="form-check">
+
+    @Html.HiddenFor(x => x.Id)
+    @Model.Question
+    @foreach (var a in Model.Answeres)
+    {
+        <p>
+            @Html.RadioButtonFor(b => b.SelectedAnswer, a.Id)  @a.Answer
+        </p>
+    }
+
+
+</div>
